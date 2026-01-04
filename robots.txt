@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amsweb.site/sitemap.xml
