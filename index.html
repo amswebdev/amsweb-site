@@ -474,6 +474,35 @@
       box-shadow: 0 0 0 4px var(--teal-soft);
     }
 
+    .scan-schematic{
+      position: relative;
+      margin: 34px 0 10px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px dashed var(--line);
+      background: var(--panel);
+      color: var(--muted3);
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 13px;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+      opacity: 0.66;
+      white-space: pre;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, rgba(0,0,0,0.9), transparent);
+      mask-image: linear-gradient(90deg, transparent, rgba(0,0,0,0.9), transparent);
+      -webkit-mask-size: 200% 100%;
+      mask-size: 200% 100%;
+      -webkit-mask-position: -20% 0;
+      mask-position: -20% 0;
+      animation: scanMask 7s linear infinite;
+    }
+
+    @keyframes scanMask{
+      0%{ -webkit-mask-position: -20% 0; mask-position: -20% 0; }
+      100%{ -webkit-mask-position: 120% 0; mask-position: 120% 0; }
+    }
+
     footer{
       display:flex;
       justify-content:space-between;
@@ -555,6 +584,7 @@
       .ghostreel-card::before{ animation: none; }
       .status-led{ animation: none; }
       .status-value{ transition: none; }
+      .scan-schematic{ animation: none; -webkit-mask-position: 50% 0; mask-position: 50% 0; opacity: 0.78; }
     }
 
     /* Command palette */
@@ -788,6 +818,18 @@
           </div>
         </section>
       </main>
+
+      <div class="scan-schematic" aria-hidden="true">
+        +-------------------------+
+        |  AMS DATA ROUTING MAP  |
+        |-------------------------|
+        |  input -> refine -> ux  |
+        |        \\      /        |
+        |        signal hub       |
+        |        /      \\        |
+        |  build -> launch -> go  |
+        +-------------------------+
+      </div>
 
       <footer>
         <div class="footer-left">
