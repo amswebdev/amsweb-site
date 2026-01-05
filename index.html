@@ -59,8 +59,19 @@
       --ink:#eaf1f2;
       --muted: rgba(234,241,242,0.78);
       --muted2: rgba(234,241,242,0.62);
+      --muted3: rgba(234,241,242,0.52);
       --teal:#38f1ff;
+      --teal-soft: rgba(56,241,255,0.12);
       --line: rgba(234,241,242,0.18);
+      --border-strong: rgba(234,241,242,0.22);
+      --panel: rgba(234,241,242,0.03);
+      --panel-strong: rgba(234,241,242,0.06);
+      --highlight: rgba(234,241,242,0.92);
+      --glow1: rgba(56,241,255,0.06);
+      --glow2: rgba(56,241,255,0.04);
+      --overlay: rgba(5, 8, 10, 0.78);
+      --palette-surface: linear-gradient(160deg, rgba(255,255,255,0.04), transparent), var(--panel);
+      --palette-input: rgba(255,255,255,0.04);
       --max: 1180px;
     }
 
@@ -71,10 +82,31 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
       background:
-        radial-gradient(1200px 700px at 10% 0%, rgba(56,241,255,0.06), transparent 60%),
-        radial-gradient(900px 600px at 85% 10%, rgba(56,241,255,0.04), transparent 65%),
+        radial-gradient(1200px 700px at 10% 0%, var(--glow1), transparent 60%),
+        radial-gradient(900px 600px at 85% 10%, var(--glow2), transparent 65%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       color: var(--ink);
+    }
+
+    body.theme-light{
+      --bg:#f6f8fb;
+      --bg2:#eef2f7;
+      --ink:#0c1418;
+      --muted: rgba(12,20,24,0.82);
+      --muted2: rgba(12,20,24,0.62);
+      --muted3: rgba(12,20,24,0.52);
+      --teal:#0ba8b6;
+      --teal-soft: rgba(11,168,182,0.16);
+      --line: rgba(12,20,24,0.16);
+      --border-strong: rgba(12,20,24,0.28);
+      --panel: rgba(12,20,24,0.04);
+      --panel-strong: rgba(12,20,24,0.07);
+      --highlight: rgba(12,20,24,0.92);
+      --glow1: rgba(11,168,182,0.14);
+      --glow2: rgba(11,168,182,0.10);
+      --overlay: rgba(12,20,24,0.32);
+      --palette-surface: linear-gradient(160deg, rgba(255,255,255,0.94), rgba(255,255,255,0.90));
+      --palette-input: rgba(255,255,255,0.92);
     }
 
     a{ color: inherit; text-decoration: none; }
@@ -141,6 +173,10 @@
       max-width: 58ch;
       margin: 0 0 10px;
     }
+    .intro strong{
+      color: var(--highlight);
+      font-weight: 800;
+    }
 
     .buildfor{
       margin: 0 0 16px;
@@ -151,14 +187,14 @@
       gap: 8px;
     }
     .buildfor .changing{
-      color: rgba(234,241,242,0.92);
+      color: var(--highlight);
       font-weight: 800;
     }
     .cursor{
       width: 9px;
       height: 16px;
       border-radius: 2px;
-      background: rgba(56,241,255,0.9);
+      background: var(--teal);
       display: inline-block;
       transform: translateY(2px);
       animation: blink 1s infinite;
@@ -191,14 +227,14 @@
     .ghostreel{
       margin-top: 18px;
       padding-top: 14px;
-      border-top: 1px solid rgba(234,241,242,0.12);
+      border-top: 1px solid var(--line);
       max-width: 860px;
     }
 
     .ghostreel-card{
       position: relative;
-      border: 1px solid rgba(234,241,242,0.12);
-      background: rgba(234,241,242,0.02);
+      border: 1px solid var(--line);
+      background: var(--panel);
       border-radius: 16px;
       overflow: hidden;
       padding: 14px 14px 12px;
@@ -245,7 +281,7 @@
 
     .ghostreel-hint{
       font-size: 11px;
-      color: rgba(234,241,242,0.52);
+      color: var(--muted3);
       margin:0;
     }
 
@@ -262,14 +298,14 @@
       line-height: 1.05;
       letter-spacing: -0.03em;
       font-weight: 850;
-      color: rgba(234,241,242,0.92);
+      color: var(--highlight);
       opacity: 1;
       transition: opacity 220ms ease;
     }
 
     .reelmeta{
       font-size: 13px;
-      color: rgba(234,241,242,0.60);
+      color: var(--muted2);
       max-width: 75ch;
       opacity: 1;
       transition: opacity 220ms ease;
@@ -290,8 +326,8 @@
       gap: 8px;
       padding: 8px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(234,241,242,0.14);
-      background: rgba(234,241,242,0.03);
+      border: 1px solid var(--line);
+      background: var(--panel);
       transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
       font-weight: 750;
       font-size: 13px;
@@ -300,16 +336,16 @@
 
     .reelbtn:hover{
       transform: translateY(-1px);
-      background: rgba(234,241,242,0.06);
-      border-color: rgba(234,241,242,0.22);
+      background: var(--panel-strong);
+      border-color: var(--border-strong);
     }
 
     .reeldot{
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: rgba(56,241,255,0.9);
-      box-shadow: 0 0 0 4px rgba(56,241,255,0.12);
+      background: var(--teal);
+      box-shadow: 0 0 0 4px var(--teal-soft);
     }
 
     footer{
@@ -341,19 +377,19 @@
       align-items:center;
       justify-content:center;
       border-radius: 999px;
-      border: 1px solid rgba(234,241,242,0.16);
-      background: rgba(234,241,242,0.04);
+      border: 1px solid var(--line);
+      background: var(--panel);
       transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
     }
     .icon:hover{
       transform: translateY(-1px);
-      background: rgba(234,241,242,0.07);
-      border-color: rgba(234,241,242,0.22);
+      background: var(--panel-strong);
+      border-color: var(--border-strong);
     }
     .icon svg{
       width: 15px;
       height: 15px;
-      fill: rgba(234,241,242,0.9);
+      fill: var(--muted);
     }
 
     .footer-right{
@@ -392,6 +428,154 @@
       .buildfor .changing{ transition: none !important; }
       .ghostreel-card::before{ animation: none; }
     }
+
+    /* Command palette */
+    .cmdk-backdrop{
+      position:fixed;
+      inset:0;
+      background: var(--overlay);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding: 70px 16px 24px;
+      opacity:0;
+      pointer-events:none;
+      transition: opacity 180ms ease;
+      z-index: 10;
+    }
+    .cmdk-backdrop.open{
+      opacity:1;
+      pointer-events:auto;
+    }
+    .cmdk-surface{
+      width: min(780px, 100%);
+      background: var(--palette-surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.35),
+        0 0 0 1px rgba(255,255,255,0.01);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: var(--ink);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .cmdk-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 16px 10px;
+      gap: 12px;
+    }
+    .cmdk-title{
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted3);
+      font-weight: 800;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .cmdk-title::before{
+      content: ">";
+      color: var(--teal);
+      font-weight: 900;
+    }
+    .cmdk-shortcut{
+      font-size: 12px;
+      color: var(--muted2);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 4px 8px;
+      background: var(--panel-strong);
+    }
+    .cmdk-input-wrap{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      padding: 0 16px 12px;
+    }
+    .cmdk-prompt{
+      color: var(--teal);
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .cmdk-input{
+      width:100%;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--palette-input);
+      color: var(--ink);
+      padding: 10px 12px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .cmdk-input::placeholder{
+      color: var(--muted2);
+      opacity: 0.7;
+    }
+    .cmdk-list{
+      list-style:none;
+      margin: 0;
+      padding: 10px;
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+      max-height: 360px;
+      overflow:auto;
+      border-top: 1px solid var(--line);
+      background: radial-gradient(800px 300px at 30% 0%, var(--glow1), transparent 65%);
+    }
+    .cmdk-item{
+      display:flex;
+      align-items:flex-start;
+      gap: 10px;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      background: transparent;
+      text-align:left;
+      width:100%;
+      color: var(--ink);
+      cursor:pointer;
+      transition: border-color 120ms ease, background 120ms ease, transform 120ms ease;
+    }
+    .cmdk-item:hover,
+    .cmdk-item:focus-visible{
+      border-color: var(--line);
+      background: var(--panel-strong);
+      transform: translateY(-1px);
+      outline: none;
+    }
+    .cmdk-item-title{
+      font-weight: 750;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+    .cmdk-item-sub{
+      color: var(--muted2);
+      font-size: 12px;
+      margin-top: 4px;
+      line-height: 1.35;
+    }
+    .cmdk-kbd{
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--muted3);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 4px 7px;
+      background: var(--panel);
+      align-self:center;
+    }
+    .cmdk-empty{
+      padding: 16px;
+      color: var(--muted2);
+      font-size: 13px;
+    }
   </style>
 </head>
 
@@ -407,7 +591,7 @@
 
       <main class="main" aria-label="Main message">
         <p class="intro">
-          <strong style="color: rgba(234,241,242,0.92); font-weight: 800;">We Are AMS.</strong>
+          <strong>We Are AMS.</strong>
           We build Shopify and e-commerce experiences for brands that want speed, clarity, and fewer headaches.
         </p>
 
@@ -470,14 +654,78 @@
     </div>
   </div>
 
+  <div class="cmdk-backdrop" id="commandPalette" aria-hidden="true">
+    <div class="cmdk-surface" role="dialog" aria-modal="true" aria-labelledby="cmdkTitle">
+      <div class="cmdk-header">
+        <div class="cmdk-title" id="cmdkTitle">Command Palette</div>
+        <div class="cmdk-shortcut">⌘K / Ctrl+K</div>
+      </div>
+      <div class="cmdk-input-wrap">
+        <span class="cmdk-prompt">$</span>
+        <label class="visually-hidden" for="cmdkInput">Search commands</label>
+        <input class="cmdk-input" id="cmdkInput" type="text" placeholder="Type an action or search for a link" autocomplete="off" />
+      </div>
+      <ul class="cmdk-list" id="cmdkList" role="listbox" aria-label="Available commands"></ul>
+    </div>
+  </div>
+
   <script>
+    const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reelItems = [
+      { name: "TMC Motorsport", meta: "Shopify store with ongoing optimisation for conversion, speed, and growth.", url: "https://www.tmcmotorsport.com" },
+      { name: "Abarth Tuning", meta: "Shopify e-commerce build with SEO structure and performance-focused improvements.", url: "https://www.abarthtuning.com" },
+      { name: "Alfa Romeo Shop", meta: "Speed and UX improvements for a specialist e-commerce catalogue.", url: "https://alfaromeoshop.com" },
+      { name: "Koshi Group Store", meta: "Premium storefront designed for clarity, trust, and global customers.", url: "https://koshigroup.store" },
+      { name: "AR Designs UK", meta: "Brochure site that presents services clearly and drives enquiries.", url: "https://www.ardesignsuk.com" }
+    ];
+    let reelIndex = 0;
+
+    function applyReelItem(item, animate = true) {
+      const nameEl = document.getElementById("reelName");
+      const metaEl = document.getElementById("reelMeta");
+      const linkEl = document.getElementById("reelLink");
+      if (!nameEl || !metaEl || !linkEl) return;
+
+      const updateContent = () => {
+        nameEl.textContent = item.name;
+        metaEl.textContent = item.meta;
+        linkEl.href = item.url;
+      };
+
+      if (!animate || prefersReducedMotion) {
+        updateContent();
+        nameEl.style.opacity = "1";
+        metaEl.style.opacity = "1";
+        return;
+      }
+
+      nameEl.style.opacity = "0";
+      metaEl.style.opacity = "0";
+      setTimeout(() => {
+        updateContent();
+        nameEl.style.opacity = "1";
+        metaEl.style.opacity = "1";
+      }, 220);
+    }
+
+    function advanceReel() {
+      reelIndex = (reelIndex + 1) % reelItems.length;
+      applyReelItem(reelItems[reelIndex]);
+    }
+
+    function randomReelItem() {
+      if (!reelItems.length) return;
+      const nextIndex = Math.floor(Math.random() * reelItems.length);
+      reelIndex = nextIndex;
+      applyReelItem(reelItems[reelIndex]);
+    }
+
     // Rotating “We build for …”
     (function () {
       const el = document.getElementById("changingText");
       if (!el) return;
 
-      const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduceMotion) return;
+      if (prefersReducedMotion) return;
 
       const phrases = [
         "Shopify stores",
@@ -502,45 +750,201 @@
     // Ghost Reel rotating projects
     (function () {
       const nameEl = document.getElementById("reelName");
-      const metaEl = document.getElementById("reelMeta");
-      const linkEl = document.getElementById("reelLink");
-      if (!nameEl || !metaEl || !linkEl) return;
+      if (!nameEl) return;
 
-      const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      applyReelItem(reelItems[0], false);
 
-      const items = [
-        { name: "TMC Motorsport", meta: "Shopify store with ongoing optimisation for conversion, speed, and growth.", url: "https://www.tmcmotorsport.com" },
-        { name: "Abarth Tuning", meta: "Shopify e-commerce build with SEO structure and performance-focused improvements.", url: "https://www.abarthtuning.com" },
-        { name: "Alfa Romeo Shop", meta: "Speed and UX improvements for a specialist e-commerce catalogue.", url: "https://alfaromeoshop.com" },
-        { name: "Koshi Group Store", meta: "Premium storefront designed for clarity, trust, and global customers.", url: "https://koshigroup.store" },
-        { name: "AR Designs UK", meta: "Brochure site that presents services clearly and drives enquiries.", url: "https://www.ardesignsuk.com" }
-      ];
+      if (prefersReducedMotion) return;
 
-      let i = 0;
+      setInterval(advanceReel, 2600);
+    })();
 
-      function swap(next) {
-        nameEl.style.opacity = "0";
-        metaEl.style.opacity = "0";
-        setTimeout(() => {
-          nameEl.textContent = next.name;
-          metaEl.textContent = next.meta;
-          linkEl.href = next.url;
-          nameEl.style.opacity = "1";
-          metaEl.style.opacity = "1";
-        }, 220);
+    // Theme toggling (light / dark gradients)
+    const body = document.body;
+    function applyTheme(mode) {
+      const next = mode === "light" ? "light" : "dark";
+      body.classList.toggle("theme-light", next === "light");
+      try {
+        localStorage.setItem("ams-theme", next);
+      } catch (err) {
+        // ignore storage errors
+      }
+    }
+
+    (function initTheme() {
+      let storedTheme = null;
+      try {
+        storedTheme = localStorage.getItem("ams-theme");
+      } catch (err) {
+        storedTheme = null;
+      }
+      if (storedTheme === "light") {
+        applyTheme("light");
+      }
+    })();
+
+    function toggleTheme() {
+      const next = body.classList.contains("theme-light") ? "dark" : "light";
+      applyTheme(next);
+    }
+
+    // Command palette
+    (function () {
+      const palette = document.getElementById("commandPalette");
+      const paletteInput = document.getElementById("cmdkInput");
+      const listEl = document.getElementById("cmdkList");
+      if (!palette || !paletteInput || !listEl) return;
+
+      let isOpen = false;
+      let visibleActions = [];
+
+      function buildActions() {
+        const themeLabel = body.classList.contains("theme-light")
+          ? "Switch to dark gradient"
+          : "Switch to light gradient";
+
+        const baseActions = [
+          {
+            id: "email",
+            label: "Email AMS",
+            sub: "hello@amsweb.site",
+            shortcut: "E",
+            run: () => { window.location.href = "mailto:hello@amsweb.site"; }
+          },
+          {
+            id: "call",
+            label: "Call AMS",
+            sub: "+44 28 9600 5393",
+            shortcut: "C",
+            run: () => { window.location.href = "tel:+442896005393"; }
+          },
+          {
+            id: "theme",
+            label: themeLabel,
+            sub: "Toggle light / dark gradients",
+            shortcut: "T",
+            run: toggleTheme
+          },
+          {
+            id: "random",
+            label: "Random case study",
+            sub: "Surface a random showcase item",
+            shortcut: "R",
+            run: randomReelItem
+          }
+        ];
+
+        const portfolioActions = reelItems.map((item, index) => ({
+          id: `portfolio-${index}`,
+          label: `Open ${item.name}`,
+          sub: item.meta,
+          shortcut: "↗",
+          run: () => { window.open(item.url, "_blank", "noopener"); }
+        }));
+
+        return [...baseActions, ...portfolioActions];
       }
 
-      if (reduceMotion) {
-        nameEl.textContent = items[0].name;
-        metaEl.textContent = items[0].meta;
-        linkEl.href = items[0].url;
-        return;
+      function renderPalette(filterValue = "") {
+        const search = filterValue.trim().toLowerCase();
+        listEl.innerHTML = "";
+        visibleActions = [];
+
+        buildActions().forEach((action) => {
+          const haystack = `${action.label} ${action.sub || ""}`.toLowerCase();
+          if (search && !haystack.includes(search)) return;
+
+          visibleActions.push(action);
+
+          const li = document.createElement("li");
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "cmdk-item";
+          button.setAttribute("role", "option");
+          button.addEventListener("click", () => runAction(action));
+
+          const copy = document.createElement("div");
+          copy.style.display = "flex";
+          copy.style.flexDirection = "column";
+          copy.style.gap = "2px";
+
+          const title = document.createElement("div");
+          title.className = "cmdk-item-title";
+          title.textContent = action.label;
+
+          const sub = document.createElement("div");
+          sub.className = "cmdk-item-sub";
+          sub.textContent = action.sub || "";
+
+          copy.appendChild(title);
+          copy.appendChild(sub);
+
+          const kbd = document.createElement("div");
+          kbd.className = "cmdk-kbd";
+          kbd.textContent = action.shortcut || "↩";
+
+          button.appendChild(copy);
+          button.appendChild(kbd);
+          li.appendChild(button);
+          listEl.appendChild(li);
+        });
+
+        if (!visibleActions.length) {
+          const empty = document.createElement("div");
+          empty.className = "cmdk-empty";
+          empty.textContent = "No commands match that query.";
+          listEl.appendChild(empty);
+        }
       }
 
-      setInterval(() => {
-        i = (i + 1) % items.length;
-        swap(items[i]);
-      }, 2600);
+      function openPalette() {
+        isOpen = true;
+        palette.classList.add("open");
+        palette.setAttribute("aria-hidden", "false");
+        paletteInput.value = "";
+        renderPalette();
+        setTimeout(() => paletteInput.focus(), 20);
+      }
+
+      function closePalette() {
+        isOpen = false;
+        palette.classList.remove("open");
+        palette.setAttribute("aria-hidden", "true");
+      }
+
+      function runAction(action) {
+        if (!action) return;
+        action.run();
+        closePalette();
+      }
+
+      paletteInput.addEventListener("input", (event) => {
+        renderPalette(event.target.value);
+      });
+
+      paletteInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          if (visibleActions[0]) runAction(visibleActions[0]);
+        }
+      });
+
+      palette.addEventListener("mousedown", (event) => {
+        if (event.target === palette) {
+          closePalette();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        const key = event.key.toLowerCase();
+        if ((event.metaKey || event.ctrlKey) && key === "k") {
+          event.preventDefault();
+          isOpen ? closePalette() : openPalette();
+        }
+        if (key === "escape" && isOpen) {
+          closePalette();
+        }
+      });
     })();
   </script>
 </body>
