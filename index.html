@@ -223,6 +223,132 @@
       letter-spacing: -0.01em;
     }
 
+    .statusbar{
+      margin: 16px 0 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--panel);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      max-width: 840px;
+    }
+    .statusbar-top{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      color: var(--muted3);
+      font-size: 12px;
+      letter-spacing: 0.03em;
+    }
+    .status-updated{
+      color: var(--muted2);
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .status-items{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+    .status-item{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(234,241,242,0.14);
+      background: linear-gradient(140deg, rgba(255,255,255,0.03), transparent);
+      min-height: 60px;
+    }
+    .status-led{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      position: relative;
+      background: var(--muted3);
+      box-shadow: 0 0 0 0 rgba(56,241,255,0.14);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    .status-led::after{
+      content:"";
+      position:absolute;
+      inset: -3px;
+      border-radius: 999px;
+      background: currentColor;
+      opacity: 0.2;
+      filter: blur(5px);
+    }
+    .status-led--good{
+      background: #4cf0c1;
+      color: #4cf0c1;
+      box-shadow: 0 0 0 0 rgba(76,240,193,0.25);
+    }
+    .status-led--warn{
+      background: #ffd166;
+      color: #ffd166;
+      box-shadow: 0 0 0 0 rgba(255,209,102,0.2);
+    }
+    .status-led--calm{
+      background: var(--teal);
+      color: var(--teal);
+      box-shadow: 0 0 0 0 rgba(56,241,255,0.22);
+    }
+    @keyframes pulse{
+      0%{ box-shadow: 0 0 0 0 rgba(56,241,255,0.24); }
+      70%{ box-shadow: 0 0 0 14px rgba(56,241,255,0); }
+      100%{ box-shadow: 0 0 0 0 rgba(56,241,255,0); }
+    }
+    .status-meta{
+      display:flex;
+      flex-direction:column;
+      gap: 4px;
+    }
+    .status-label{
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted3);
+      font-weight: 800;
+    }
+    .status-value{
+      font-size: 17px;
+      font-weight: 780;
+      color: var(--highlight);
+    }
+    .pill-badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--highlight);
+      font-weight: 760;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(234,241,242,0.06) 0,
+          rgba(234,241,242,0.06) 10px,
+          rgba(234,241,242,0.0) 10px,
+          rgba(234,241,242,0.0) 20px
+        ),
+        var(--panel-strong);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .pill-dot{
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--teal);
+      box-shadow: 0 0 0 4px var(--teal-soft);
+    }
+
     /* Ghost Reel (compact) */
     .ghostreel{
       margin-top: 18px;
@@ -427,6 +553,8 @@
       .cursor{ animation: none; opacity: 0.65; }
       .buildfor .changing{ transition: none !important; }
       .ghostreel-card::before{ animation: none; }
+      .status-led{ animation: none; }
+      .status-value{ transition: none; }
     }
 
     /* Command palette */
@@ -600,6 +728,42 @@
         </p>
 
         <h1 class="headline">Innovate. Inform. Inspire.</h1>
+        <section class="statusbar" aria-label="Live performance indicators">
+          <div class="statusbar-top">
+            <span class="pill-badge"><span class="pill-dot" aria-hidden="true"></span> Live telemetry</span>
+            <span class="status-updated" id="statusUpdated">Stable snapshot</span>
+          </div>
+          <div class="status-items" role="list">
+            <div class="status-item" role="listitem">
+              <span class="status-led status-led--good" id="ledUptime" aria-hidden="true"></span>
+              <div class="status-meta">
+                <span class="status-label">Uptime</span>
+                <span class="status-value" id="metricUptime">99.98%</span>
+              </div>
+            </div>
+            <div class="status-item" role="listitem">
+              <span class="status-led status-led--calm" id="ledResponse" aria-hidden="true"></span>
+              <div class="status-meta">
+                <span class="status-label">Avg response</span>
+                <span class="status-value" id="metricResponse">186ms</span>
+              </div>
+            </div>
+            <div class="status-item" role="listitem">
+              <span class="status-led status-led--good" id="ledConversion" aria-hidden="true"></span>
+              <div class="status-meta">
+                <span class="status-label">Conv. lift</span>
+                <span class="status-value" id="metricConversion">4.8%</span>
+              </div>
+            </div>
+            <div class="status-item" role="listitem">
+              <span class="status-led status-led--warn" id="ledDeploys" aria-hidden="true"></span>
+              <div class="status-meta">
+                <span class="status-label">Deploy cadence</span>
+                <span class="status-value" id="metricDeploys">22/mo</span>
+              </div>
+            </div>
+          </div>
+        </section>
         <p class="subline">Bold Brands, Smart Data, Real Results.</p>
 
         <section class="ghostreel" aria-label="Portfolio reel">
@@ -679,6 +843,12 @@
       { name: "AR Designs UK", meta: "Brochure site that presents services clearly and drives enquiries.", url: "https://www.ardesignsuk.com" }
     ];
     let reelIndex = 0;
+    const statusMetrics = [
+      { id: "metricUptime", led: "ledUptime", min: 99.92, max: 99.999, decimals: 2, suffix: "%", mode: "uptime" },
+      { id: "metricResponse", led: "ledResponse", min: 120, max: 240, decimals: 0, suffix: "ms", mode: "response" },
+      { id: "metricConversion", led: "ledConversion", min: 3.7, max: 6.1, decimals: 1, suffix: "%", mode: "conversion" },
+      { id: "metricDeploys", led: "ledDeploys", min: 16, max: 32, decimals: 0, suffix: "/mo", mode: "deploys" }
+    ];
 
     function applyReelItem(item, animate = true) {
       const nameEl = document.getElementById("reelName");
@@ -719,6 +889,48 @@
       reelIndex = nextIndex;
       applyReelItem(reelItems[reelIndex]);
     }
+
+    // Status bar randomiser
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function setLedState(ledId, state) {
+      const ledEl = document.getElementById(ledId);
+      if (!ledEl) return;
+      ledEl.className = `status-led status-led--${state}`;
+    }
+
+    function deriveLedState(mode, value) {
+      if (mode === "response") return value > 220 ? "warn" : "calm";
+      if (mode === "deploys") return value >= 24 ? "calm" : "warn";
+      return "good";
+    }
+
+    function applyStatusSnapshot() {
+      statusMetrics.forEach((metric) => {
+        const valueEl = document.getElementById(metric.id);
+        if (!valueEl) return;
+        const value = randomInRange(metric.min, metric.max);
+        const formatted = `${value.toFixed(metric.decimals)}${metric.suffix}`;
+        valueEl.textContent = formatted;
+        setLedState(metric.led, deriveLedState(metric.mode, value));
+      });
+
+      const updatedEl = document.getElementById("statusUpdated");
+      if (updatedEl) {
+        const now = new Date();
+        updatedEl.textContent = prefersReducedMotion
+          ? "Static snapshot (reduced motion enabled)"
+          : `Updated ${now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+      }
+    }
+
+    (function initStatusBar() {
+      applyStatusSnapshot();
+      if (prefersReducedMotion) return;
+      setInterval(applyStatusSnapshot, 3400);
+    })();
 
     // Rotating “We build for …”
     (function () {
