@@ -69,6 +69,9 @@
       --highlight: rgba(234,241,242,0.92);
       --glow1: rgba(56,241,255,0.06);
       --glow2: rgba(56,241,255,0.04);
+      --overlay: rgba(5, 8, 10, 0.78);
+      --palette-surface: linear-gradient(160deg, rgba(255,255,255,0.04), transparent), var(--panel);
+      --palette-input: rgba(255,255,255,0.04);
       --max: 1180px;
     }
 
@@ -101,6 +104,9 @@
       --highlight: rgba(12,20,24,0.92);
       --glow1: rgba(11,168,182,0.14);
       --glow2: rgba(11,168,182,0.10);
+      --overlay: rgba(12,20,24,0.32);
+      --palette-surface: linear-gradient(160deg, rgba(255,255,255,0.94), rgba(255,255,255,0.90));
+      --palette-input: rgba(255,255,255,0.92);
     }
 
     a{ color: inherit; text-decoration: none; }
@@ -427,7 +433,7 @@
     .cmdk-backdrop{
       position:fixed;
       inset:0;
-      background: rgba(5, 8, 10, 0.78);
+      background: var(--overlay);
       display:flex;
       align-items:flex-start;
       justify-content:center;
@@ -443,7 +449,7 @@
     }
     .cmdk-surface{
       width: min(780px, 100%);
-      background: linear-gradient(160deg, rgba(255,255,255,0.04), transparent), var(--panel);
+      background: var(--palette-surface);
       border: 1px solid var(--line);
       border-radius: 16px;
       box-shadow:
@@ -501,7 +507,7 @@
       width:100%;
       border-radius: 10px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
+      background: var(--palette-input);
       color: var(--ink);
       padding: 10px 12px;
       font-size: 15px;
